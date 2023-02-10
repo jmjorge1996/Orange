@@ -1,0 +1,10 @@
+.graphicCardItem__data{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    gap: 10px;
+
+    small {
+        opacity: 0.8;
+    }
+}

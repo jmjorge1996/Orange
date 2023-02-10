@@ -1,0 +1,42 @@
+<section class="graphicCardItem__main__container" *ngIf="graphicCard">
+    <h1 class="graphicCardItem__main__title">{{graphicCard.name}}</h1>
+    <div class="graphicCardItem__data__container">
+        <div class="graphicCardItem__data__metadata">
+            <app-graphic-card-item-data title='Name' value={{graphicCard.name}}></app-graphic-card-item-data>
+            <app-graphic-card-item-data title='Manufacturer'
+                value={{graphicCard.manufacturer}}></app-graphic-card-item-data>
+            <app-graphic-card-item-data title='Brand' value={{graphicCard.brand}}></app-graphic-card-item-data>
+
+
+            <!-- <div class="graphicCardItem__data">
+                <small>Name:</small>
+                <h4>{{graphicCard.name}}</h4>
+            </div> -->
+            <div class="graphicCardItem__data">
+                <small>Manufacturer:</small>
+                <h4>{{graphicCard.manufacturer}}</h4>
+            </div>
+            <div class="graphicCardItem__data">
+                <small>Brand:</small>
+                <h4>{{graphicCard.brand}}</h4>
+            </div>
+            <div class="graphicCardItem__data">
+                <small>Price:</small>
+                <h4>{{graphicCard.price}} €</h4>
+            </div>
+            <div class="graphicCardItem__data">
+                <small>VRAM:</small>
+                <h4>{{graphicCard.vram}}</h4>
+            </div>
+        </div>
+        <div class="graphicCardItem__data__img" [ngStyle]="{ 'background-image': 'url(' + graphicCard.image + ')'}">
+        </div>
+    </div>
+
+    <div class="graphicCardItem__back__btn">
+        <button mat-fab extended color="primary" (click)="goBack()">
+            <mat-icon>keyboard_backspace</mat-icon>
+            Back
+        </button>
+    </div>
+</section>

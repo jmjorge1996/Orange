@@ -1,0 +1,28 @@
+<section class="graphicCardList__main__container">
+    <h1 class="graphicCardList__main__title">Graphics cards:</h1>
+    <form id="search-form" [formGroup]="form" class="graphicCardList__filter__container">
+        <mat-form-field class="graphicCard__search__field" appearance="fill">
+            <mat-label>Search</mat-label>
+            <input matInput formControlName="query" (input)="onSearch()">
+        </mat-form-field>
+
+        <mat-form-field class="graphicCard__paginator__field" appearance="fill">
+            <mat-label>Paginator</mat-label>
+            <mat-select formControlName="paginator" [(value)]="initialOffset">
+                <mat-option [value]="10">10</mat-option>
+                <mat-option [value]="20">20</mat-option>
+                <mat-option [value]="50">50</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <mat-divider></mat-divider>
+    <div #graphicCardList class="graphicCard__list">
+        <mat-card class="graphicCard__item" *ngFor="let graphicCard of graphicsCards"
+            (click)="goToGraphicCard(graphicCard)">
+            <span class="graphicCard__item__title">
+                {{graphicCard.name}}
+            </span>
+        </mat-card>
+    </div>
+    <mat-spinner class="graphicCard__spinner__container" *ngIf="isLoading"></mat-spinner>
+</section>

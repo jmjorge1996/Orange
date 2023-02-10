@@ -1,0 +1,33 @@
+version: '1'
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./server:/usr/share/nginx/html/
+      - ./server/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "5080:80"
+    extra_hosts:
+      docker.host: "172.17.0.1"
+    #Dynamic value - Host dependency
+    #ports: //PROD
+    #  - "80:80"
+    links:
+      - express  
+  express:
+    build: server
+    volumes:
+    #  - "./server:/usr/src/app"
+      - "./server:/usr/src/app"
+      - "./server/node_modules:/usr/src/app/node_modules"
+    ports:
+      - "5000:5000"
+    links:
+      - mongo  
+  mongo:
+    image: mongo
+    volumes:
+      - "/Users/Shared/mongodb/db:/data/db"
+    ports:
+      - "27017:27017"
